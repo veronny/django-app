@@ -1,0 +1,22 @@
+{% extends 'adminlte/base.html' %}
+
+<!-- Set title of app -->
+{% block title %}Pagina Principal{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %}
+    <h1>Agregar dashboard</h1>
+
+
+{% endblock %}
+
+{% block javascript %}
+
+{% include 'adminlte/lib/_scripts.html' %}
+<script>
+    $(document).ready(function() {
+      let provincia = $("#myForm").data("provincia")
+      console.log(provincia);
+    });
+  </script>
+{% endblock %}

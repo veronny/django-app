@@ -1,0 +1,148 @@
+{% extends 'adminlte/base.html' %} {% load static %} {% load widget_tweaks %}
+
+<!-- Set title of app -->
+{% block title %}Pagina Principal{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %} {% for gest in gestante %}
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Paquete Gestante</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+          <li class="breadcrumb-item active">{{ gest.distrito }}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content m-0 row justify-content-center">
+  <div class="col-md-4">
+    <div class="card card-widget widget-user shadow">
+      <div class="widget-user-header bg-maroon text-white">
+        <h3 class="widget-user-username text-center">CAPTACION DE GESTANTE</h3>        
+        <h4 class="widget-user-username text-left">Meta: {{ gest.meta_captacion}}</h4>
+      </div>
+      <div class="widget-user-image">
+        <img class="img-circle" src="{% static 'captacion_90.png' %}" alt="User Avatar"/>
+      </div>
+    </br>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="image text-center">
+              <img class="img-circle elevation-2" src="{% static 'captacion_logo_90.png' %}" alt="User Image"/>
+              <h5 class="widget-user-desc">Captacion de gestante</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="description-block">
+              <span>
+                <h2>{{ gest.captacion}}</h2>
+              </span>
+              <span class="badge bg-success text-white" >
+                <h2>{{ gest.por_captacion }} %</h2>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content m-0 row justify-content-center">
+  <div class="col-md-12">
+    <div class="card card-widget widget-user shadow">
+      <div class="widget-user-header bg-maroon text-white">
+        <h3 class="widget-user-username text-center">PAQUETE INTEGRADO DE SERVICIOS</h3>        
+        <h4 class="widget-user-username text-left">Meta: {{ gest.meta_paquete }}</h4>
+        <h3 class="widget-user-desc text-right">
+          <span class="badge bg-success">
+            <h3>{{ gest.por_paquete}}  %</h3>
+          </span>
+        </h3>        
+      </div>
+      <div class="widget-user-image">
+        <img class="img-circle" src="{% static 'bebe_90.png' %}" alt="User Avatar"/>
+      </div>
+    </br>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-4 border-right">
+            <div class="image text-center">
+              <img class="img-circle elevation-2" src="{% static 'examen_orina_90.png' %}" alt="User Image"/>
+              <h5 class="widget-user-desc">4 examenes auxiliares en el 1er Trimestre</h5>
+            </div>
+          </div>
+
+          <div class="col-sm-4 border-right">
+            <div class="image text-center">
+              <img class="img-circle elevation-2" src="{% static 'registro_90.png' %}" alt="User Image"/>
+              <h5 class="widget-user-desc">6 controles prenatales</h5>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="image text-center">
+              <img class="img-circle elevation-2" src="{% static 'medicamento_90.png' %}" alt="User Image"/>
+              <h5 class="widget-user-desc">4 entregas de sulfato ferroso + acido folico</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              <span>
+                <h2>{{ gest.examen }}</h2>
+              </span>
+              <span class="badge bg-warning">
+                <h2>{{ gest.por_examen }} %</h2>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-sm-4 border-right">
+            <div class="description-block">
+              <span>
+                <h2>{{ gest.control }}</h2>
+              </span>
+              <span class="badge bg-success">
+                <h2>{{ gest.por_control }} %</h2>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="description-block">
+              <span>
+                <h2>{{ gest.sulfato }}</h2>
+              </span>
+              <span class="badge bg-danger">
+                <h2>{{ gest.por_sulfato }} %</h2>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<h6 class="mb-2">Fuente de Informacion:<small><i> HIS MINSA y CNV EN LINEA</i></small> - Fecha de Actualizacion:<small><i> Mes de Setiembre</i></small></h6>
+{% endfor %} 
+
+<button class="btn btn-primary">Volver</button>
+{% endblock %}

@@ -1,0 +1,260 @@
+{% extends 'adminlte/base.html' %} {% load static %} {% load widget_tweaks %}
+
+<!-- Set title of app -->
+{% block title %}Pagina Principal{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %} 
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>{{ title }}</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+          <li class="breadcrumb-item active">{{ title }}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Selecciona tu distrito</h3>
+          </div>
+
+          <div class="card-body">
+            <form
+              class="form-horizontal"
+              id="myForm"
+              method="POST"
+              action="{% url 'GestanteApp:filter_gestante' %}"
+            >
+              {% csrf_token %}
+              <label>Provincia</label>
+              <div class="form-group">{{ form.provincia }}</div>
+              <label>Distrito</label>
+              <div class="form-group">{{ form.distrito }}</div>
+              <div class="form-group">
+                <button class="btn btn-success btn-block" type="submit">
+                  Ver
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link active" href="#activity" data-toggle="tab">Ranking</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#timeline" data-toggle="tab">Mapa</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="active tab-pane" id="activity">
+                <label>Ranking por Provincia</label>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Provincia</th>
+                      <th>Avance</th>
+                      <th style="width: 40px">Label</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1.</td>
+                      <td>HUANCAYO</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div
+                            class="progress-bar progress-bar-danger"
+                            style="width: 55%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-danger">55%</span></td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+                      <td>CONCEPCION</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div
+                            class="progress-bar bg-warning"
+                            style="width: 70%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-warning">70%</span></td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>CHANCHAMAYO</td>
+                      <td>
+                        <div
+                          class="progress progress-xs progress-striped active"
+                        >
+                          <div
+                            class="progress-bar bg-primary"
+                            style="width: 30%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-primary">30%</span></td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td>PICHANAKI</td>
+                      <td>
+                        <div
+                          class="progress progress-xs progress-striped active"
+                        >
+                          <div
+                            class="progress-bar bg-success"
+                            style="width: 90%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-success">90%</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <label>Ranking por Distrito</label>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>DISTRITO</th>
+                      <th>AVANCE</th>
+                      <th style="width: 40px">Label</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1.</td>
+                      <td>HUANCAYO</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div
+                            class="progress-bar progress-bar-danger"
+                            style="width: 55%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-danger">55%</span></td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+                      <td>CONCEPCION</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div
+                            class="progress-bar bg-warning"
+                            style="width: 70%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-warning">70%</span></td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>CHANCHAMAYO</td>
+                      <td>
+                        <div
+                          class="progress progress-xs progress-striped active"
+                        >
+                          <div
+                            class="progress-bar bg-primary"
+                            style="width: 30%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-primary">30%</span></td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td>PICHANAKI</td>
+                      <td>
+                        <div
+                          class="progress progress-xs progress-striped active"
+                        >
+                          <div
+                            class="progress-bar bg-success"
+                            style="width: 90%"
+                          ></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-success">90%</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block javascript %} {% include 'adminlte/lib/_scripts.html' %}
+<script type="text/javascript">
+  $(function () {
+    $('select[name="provincia"]').on("change", function () {
+      var id = $(this).val();
+      var select_distrito = $('select[name="distrito"]');
+      var options = '<option value="">-------------</option>';
+      if (id == "") {
+        select_distrito.html(options);
+        return false;
+      }
+      $.ajax({
+        url: window.location.pathname,
+        type: "POST",
+        data: {
+          action: "search_provincia_id",
+          id: id,
+        },
+        dataType: "json",
+      })
+        .done(function (data) {
+          if (!data.hasOwnProperty("error")) {
+            $.each(data, function (key, value) {
+              options +=
+                '<option value="' + value.id + '">' + value.name + "</option>";
+            });
+            return false;
+          }
+          message_error(data.error);
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+          alert(textStatus + ": " + errorThrown);
+        })
+        .always(function (data) {
+          select_distrito.html(options);
+        });
+    });
+  });
+</script>
+{% endblock %}
